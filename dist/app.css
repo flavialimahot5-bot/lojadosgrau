@@ -1,0 +1,2 @@
+html{scroll-behavior:smooth}body{margin:0}#preview-dialog{border:0;border-radius:16px;padding:28px;max-width:480px;width:calc(100% - 40px);color:#143d52;font-family:Arial,sans-serif;box-shadow:0 15px 80px #0005}#preview-dialog::backdrop{background:#001c3c88}#preview-dialog button{background:#00a6d4;color:white;border:0;border-radius:6px;padding:12px 22px;cursor:pointer;margin-top:16px}.preview-results{display:grid;gap:12px}.preview-result{display:flex;gap:12px;align-items:center}.preview-result img{width:60px;height:60px;object-fit:contain}.slick-arrow{cursor:pointer}
+
