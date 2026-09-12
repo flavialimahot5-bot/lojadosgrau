@@ -31,10 +31,10 @@ test('signed receipts resume on another instance; tampering and ambiguous retrie
   return{ok:true,json:async()=>({data:provider.get(new URL(url).pathname.split('/').at(-1))})};
  };
  try{
-  const q=await quote(items,'sedex');assert.equal(q.amount,16980);
+  const q=await quote(items,'sedex');assert.equal(q.amount,7386);
   const [a,b]=await Promise.all([create(q.id,q.accessToken,customer),create(q.id,q.accessToken,customer)]);
   assert.equal(posts,1);assert.equal(a.accessToken,b.accessToken);assert.equal(a.state,'pending');
-  assert.equal(payload.amount,16980);assert.equal(payload.cart.at(-1).price,990);assert.equal(payload.payment_method,'pix');assert.ok(payload.cart.every(item=>item.cover===null));
+  assert.equal(payload.amount,7386);assert.equal(payload.cart.at(-1).price,990);assert.equal(payload.payment_method,'pix');assert.ok(payload.cart.every(item=>item.cover===null));
   assert.ok(!payload.postback_url);assert.ok(a.qrCode.startsWith('data:image/png;base64,'));
   const decoded=Buffer.from(a.accessToken.split('.')[0],'base64url').toString();
   for(const secret of [...Object.values(credentials),customer.document,customer.email,'provider-private-token']){assert.ok(!decoded.includes(secret));assert.ok(!JSON.stringify(a).includes(secret))}
@@ -46,7 +46,7 @@ test('signed receipts resume on another instance; tampering and ambiguous retrie
   await assert.rejects(other.view(a.id,a.accessToken+'bad'));
   await assert.rejects(other.view('different-id',a.accessToken));
   provider.get('test-transaction-1').amount=1;await assert.rejects(other.view(a.id,a.accessToken));
-  provider.get('test-transaction-1').amount=16980;provider.get('test-transaction-1').payment_method='credit_card';await assert.rejects(other.view(a.id,a.accessToken));
+  provider.get('test-transaction-1').amount=7386;provider.get('test-transaction-1').payment_method='credit_card';await assert.rejects(other.view(a.id,a.accessToken));
   timeout=true;const q2=await quote(items,'pac');
   assert.equal((await create(q2.id,q2.accessToken,customer)).state,'unknown');
   assert.equal((await create(q2.id,q2.accessToken,customer)).state,'unknown');assert.equal(posts,2);
@@ -61,10 +61,10 @@ test('provider rejection gives a safe diagnostic; accepted hashes survive incomp
   if(options.method==='POST'){
    posts++;
    if(mode==='reject')return{ok:false,status:422,json:async()=>({message:'PRIVATE '+customer.document,errors:{'cart.0.cover':['SECRET '+credentials.IRONPAY_API_TOKEN],'customer.document':[customer.document]}})};
-   return{ok:true,json:async()=>({hash:'accepted-hash',amount:15990,payment_status:'pending',pix:{pix_qr_code:'000201-test-only'}})};
+   return{ok:true,json:async()=>({hash:'accepted-hash',amount:6396,payment_status:'pending',pix:{pix_qr_code:'000201-test-only'}})};
   }
   if(mode==='lookup-fails')return{ok:false,status:401,json:async()=>({message:'private token'})};
-  return{ok:true,json:async()=>({data:{hash:'accepted-hash',amount:15990,payment_method:'pix',status:'approved'}})};
+  return{ok:true,json:async()=>({data:{hash:'accepted-hash',amount:6396,payment_method:'pix',status:'approved'}})};
  };
  try{
   const q=await quote(items,'pac'),r=await create(q.id,q.accessToken,customer);
