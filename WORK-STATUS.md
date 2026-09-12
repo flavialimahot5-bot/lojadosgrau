@@ -14,3 +14,6 @@ Prévia: node server.mjs na porta 4173. Não executar build antigo/store-build s
 
 Destino solicitado: Vercel, via https://github.com/flavialimahot5-bot/lojadosgrau.git. Remote origin configurado e branch main. Configuração vercel.json, package.json, validação estática e README adicionados. npm run check passou: 1181 produtos, 2597 arquivos e zero referências locais ausentes. Push ainda não realizado: revisão automática exigiu autorização explícita para enviar o projeto completo ao repositório externo.
 
+
+Atualização: autenticação Git concluída com flavialimahot5-bot. Projeto enviado para origin/main e commit remoto conferido. Este repositório local usa a conta Flavia nos próximos envios e commits. Configuração da Vercel incluída; implantação na Vercel ainda não realizada.
+
