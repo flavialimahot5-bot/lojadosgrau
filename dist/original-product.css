@@ -94,3 +94,19 @@
 @media(max-width:767px){.original-product #trustvox .ts-product-reviews-flex{grid-template-columns:minmax(0,1fr);gap:24px}.original-product #trustvox .ts-product-review_title h3{font-size:20px}.original-product #trustvox .ts-header{justify-content:space-between}.original-product #trustvox .ts-text-date{margin-left:auto}.original-product #trustvox .side-review-container{max-width:360px;margin:auto}}
 @media(max-width:991px){.original-product .product__info .attrSimples{width:100%!important;max-width:100%!important;padding:0!important;margin:0 0 16px!important;box-sizing:border-box}}
 @media(max-width:991px){.original-product .product__info #attrSimples,.original-product .product__info #attrSimples>ul{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;padding:0!important;margin:0!important;box-sizing:border-box}.original-product .product__info #attrSimples .attrSimples__attrSelecionado{width:100%!important;max-width:100%!important;margin:0!important;box-sizing:border-box}}
+/* A single, viewport-sized photo surface avoids inherited product gallery transforms. */
+.original-product .local-photo-gallery{position:fixed!important;inset:0!important;width:100%!important;max-width:none!important;height:100dvh!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;background:#111!important;overflow:hidden!important;box-sizing:border-box;touch-action:manipulation}
+.original-product .local-photo-gallery:not([open]){display:none!important}
+.original-product .local-photo-gallery[open]{display:block!important}
+.original-product .local-photo-gallery::backdrop{background:#111}
+.original-product .local-photo-gallery .photo-image{display:block!important;position:absolute;inset:0;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;transform:none!important;margin:0!important;border-radius:0!important}
+.original-product .local-photo-gallery button{position:absolute;z-index:2;display:grid;place-items:center;min-width:48px;height:52px;padding:0 12px;border:0;border-radius:4px;background:#0009;color:#fff;font:36px/1 Arial;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.original-product .local-photo-gallery button[hidden]{display:none!important}
+.original-product .local-photo-gallery .photo-close{right:12px;top:max(12px,env(safe-area-inset-top))}
+.original-product .local-photo-gallery .photo-prev{left:12px;top:50%;transform:translateY(-50%)}
+.original-product .local-photo-gallery .photo-next{right:12px;top:50%;transform:translateY(-50%)}
+.original-product .local-photo-gallery .photo-count{position:absolute;z-index:2;bottom:max(12px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);padding:6px 12px;border-radius:4px;background:#0009;color:white;font:14px Arial;white-space:nowrap}
+@media(max-width:991px){.original-product .store-header-desktop{display:none!important}.original-product .store-header-mobile{display:block!important}.original-product header #menuBar,.original-product header .menu-sub{display:none!important}}
+html:has(.local-photo-gallery[open]){overflow:hidden!important}
+.original-product .store-header-mobile button[aria-label="Abre menu de navegação lateral"]{flex:0 0 32px!important;width:32px!important;min-width:32px!important;height:40px!important;padding:0!important;display:grid!important;place-items:center}
+.original-product .store-header-mobile button[aria-label="Abre menu de navegação lateral"] svg{width:26px!important;height:28px!important;max-width:none!important}
