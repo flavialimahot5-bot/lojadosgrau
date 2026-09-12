@@ -1,0 +1,11 @@
+#alerta {
+  padding: 0px 0px 48px;
+}
+.alerta .alerta__container {
+  background: #fff !important;
+}
+@media (max-width: 991px) {
+  #alerta {
+    padding: 0px 16px 16px;
+  }
+}

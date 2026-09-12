@@ -1,0 +1,12 @@
+section#tabela-nutricional div[style*="display: none"] {
+  display: flex !important;
+}
+
+.table__container-geral div.d-flex {
+  display: flex !important;
+}
+@media (max-width: 991px) {
+  .alerta .alerta__container .image__container img {
+    width: 100px !important;
+  }
+}

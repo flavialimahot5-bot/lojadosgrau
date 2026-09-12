@@ -1,0 +1,4 @@
+
+:not(#\20):not(#\20):not(#\20).trustvox-widget .ts-product-reviews-overview-featured {
+  display: none;
+}

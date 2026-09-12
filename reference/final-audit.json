@@ -1,0 +1,28 @@
+{
+  "at": "2026-09-12T02:55:30.704Z",
+  "products": 1181,
+  "productPages": 1181,
+  "missingPages": [],
+  "brokenCollectionProductIds": [],
+  "collectionsWithProducts": 132,
+  "mobileSnapshots": 6,
+  "verifiedFlows": [
+    "home → Whey collection (34 products)",
+    "home category tabs → collection",
+    "Roupas collection (815 products) → product page",
+    "Mês do cliente (62 products) → pagination",
+    "Kit 4092 → Chocolate → cart R$88.90 → remove"
+  ],
+  "limitations": [
+    "All product pages captured; individual variants and all mobile layouts have not been exhaustively validated.",
+    "Sites publication returns project_not_found.",
+    "Browser variant collection interrupted by automatic approval review: no credits remaining. About 600 selector pages require further option verification."
+  ],
+  "updatedAt": "2026-09-12T03:22:29.283Z",
+  "localChanges": [
+    "Mobile gallery and option wrapping adjusted",
+    "Imported verified P/M/G/GG options for product 4575",
+    "Unresolved selectors prevent adding an unverified variation to cart",
+    "Accordion and close-video controls connected"
+  ]
+}

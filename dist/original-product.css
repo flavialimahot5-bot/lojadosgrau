@@ -1,0 +1,18 @@
+.original-product [role=listbox][data-local-list][hidden]{display:none!important}.original-product [role=radio],.original-product [role=option]{cursor:pointer}.original-product [role=radio][aria-checked=true]{outline:2px solid #13a6d5;outline-offset:-2px}.original-product .local-selection-error{background:#fff3f2;border:1px solid #ebc5c3;color:#a72d22;padding:12px;border-radius:5px;font:14px Arial;margin:10px 0}.original-product main [role=option][aria-selected=true]{background:#e8f7fe}.original-product .store-header-mobile{display:none}.original-product .store-header-desktop{display:block}@media(max-width:991px){.original-product .store-header-mobile{display:block}.original-product .store-header-desktop{display:none}.original-product header .headerMainContainer{min-width:0!important}.original-product{overflow-x:clip}}
+@media(max-width:991px){
+.original-product .gallery{flex-direction:column-reverse!important;gap:12px!important;max-width:100%;min-width:0}
+.original-product .gallery__main{width:100%!important;min-width:0!important;max-width:100%!important}
+.original-product .gallery__main-slide img{width:100%!important;max-height:400px!important;object-fit:contain}
+.original-product .gallery__thumbs-col{width:100%!important;max-width:100%!important;height:auto!important}
+.original-product .gallery__thumbs-swiper{height:auto!important;overflow-x:auto!important}
+.original-product .gallery__thumbs-swiper .swiper-wrapper{display:flex!important;flex-direction:row!important;height:auto!important;transform:none!important;width:max-content!important}
+.original-product .gallery__thumb-slide{width:62px!important;height:68px!important;margin:0 8px 0 0!important;flex-shrink:0}
+.original-product .gallery__thumb-slide img{height:64px!important;width:60px!important;object-fit:contain}
+.original-product .flavorSelector__grid,.original-product .weightCards__list{display:flex!important;flex-wrap:wrap!important;gap:8px!important;width:100%!important;transform:none!important}
+.original-product .flavorSelector__button,.original-product .weightCards__card{flex:1 1 110px!important;min-width:0!important;max-width:100%!important}
+.original-product .weightCards__viewport,.original-product .flavorSelector__valores{overflow:visible!important;width:100%!important;min-width:0!important}
+.original-product .topo__container-wrapper>div{min-width:0;max-width:100%}
+.original-product .comparativo{max-width:100%;overflow-x:auto}
+.original-product .topo-v4-bullets .swiper-wrapper{overflow-x:auto;transform:none!important}
+.original-product main h1{overflow-wrap:anywhere}
+}
