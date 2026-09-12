@@ -56,3 +56,41 @@
 .original-product .product__medias .vitrine-imagens::-webkit-scrollbar,.original-product .breadcrumb::-webkit-scrollbar{display:none}
 .original-product .product__medias .vitrine-imagens{overscroll-behavior-x:contain}
 }
+/* Purchase controls share the same mobile content edges. */
+@media(max-width:991px){
+.original-product main .botao-compra{width:100%!important;max-width:100%!important;margin-left:0!important;margin-right:0!important;padding-left:0!important;padding-right:0!important;box-sizing:border-box}
+.original-product main .botao-compra .botaoComprar{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;box-sizing:border-box}
+.original-product .product__info .attrSimples_valores,.original-product .product__info .attrSimples_valores>ul{display:block!important;width:100%!important;max-width:100%!important;margin:0!important;padding:0!important;box-sizing:border-box}
+.original-product .product__info .attrSimples__attrSelecionado{box-sizing:border-box;width:100%!important;margin:0!important}
+.original-product .product__info .botaoComprar>span{flex:1;text-align:center}
+.original-product .product__info .botaoComprar>div{flex:0 0 64px;display:flex;align-items:center;justify-content:center}
+}
+/* Captured review markup needs its widget layout without external runtime CSS. */
+.original-product #trustvox{box-sizing:border-box;width:100%;max-width:1200px;margin:32px auto;padding:0 18px;font:14px/1.5 Arial,sans-serif;color:#333}
+.original-product #trustvox *{box-sizing:border-box;word-break:normal;overflow-wrap:break-word}
+.original-product #trustvox .titleDetProd{display:block;font-size:18px}
+.original-product #trustvox .ts-product-reviews{width:100%;min-width:0}
+.original-product #trustvox .ts-product-review_title h3{font-size:22px;line-height:1.3;margin:0 0 8px}
+.original-product #trustvox .ts-product-review_title p{color:#666;margin:0 0 24px}
+.original-product #trustvox .ts-product-reviews-flex{display:grid;grid-template-columns:260px minmax(0,1fr);gap:32px;align-items:start}
+.original-product #trustvox .side-product-review{min-width:0;padding:20px;border:1px solid #e5e5e5;border-radius:8px;background:#fff}
+.original-product #trustvox .ts-rating-summary{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:16px}
+.original-product #trustvox .ts-v-rating-note_value{font-size:38px;font-weight:700}.original-product #trustvox .ts-v-rating-note_of{font-size:18px;color:#777}
+.original-product #trustvox .ts-rating-title p{margin:4px 0;text-align:center}
+.original-product #trustvox .ts-v-stars{position:relative;display:inline-block;width:100px;height:20px;line-height:0;vertical-align:middle;overflow:hidden;flex-shrink:0}
+.original-product #trustvox .ts-v-stars__container,.original-product #trustvox .ts-v-stars-foreground>span{display:flex;width:100px;height:20px;gap:0;white-space:nowrap}
+.original-product #trustvox .ts-v-stars-foreground{display:block;position:absolute;top:0;left:0;height:20px;overflow:hidden}
+.original-product #trustvox .ts-v-star{display:block;width:20px!important;height:18px!important;min-width:20px;max-width:none;flex:0 0 20px}
+.original-product #trustvox .ts-rating-row{display:flex;align-items:center;gap:10px;margin:8px 0}.original-product #trustvox .ts-star{display:flex;align-items:center;gap:5px;width:34px;flex-shrink:0}.original-product #trustvox .ts-star svg{width:14px;height:14px}
+.original-product #trustvox .ts-bar{height:8px;flex:1;overflow:hidden;border-radius:5px;background:#eee}.original-product #trustvox .ts-fill{height:100%;background:#e9ac13;border-radius:5px}
+.original-product #trustvox .ts-v-recommendations{display:flex;align-items:center;gap:12px;padding:20px 0}.original-product #trustvox .ts-v-recommendations_percentage{position:relative;flex:0 0 64px;width:64px;height:64px;display:grid;place-items:center}.original-product #trustvox .ts-v-recommendations_percentage svg{position:absolute;inset:0;width:64px;height:64px}.original-product #trustvox .ts-v-percentage-label{position:relative;font-size:16px;font-weight:700}.original-product #trustvox .ts-v-recommendations_text{font-size:13px;flex:1}
+.original-product #trustvox .ts-v-footer-container{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;color:#444;text-decoration:none;font-size:12px}.original-product #trustvox .ts-v-footer-icon{width:28px;height:28px}.original-product #trustvox .ts-v-footer-logo{width:135px;max-width:100%;height:auto}
+.original-product #trustvox .ts-product-reviews-list{min-width:0;width:100%}.original-product #trustvox .ts-header{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:0 0 16px}
+.original-product #trustvox .ts-custom-dropdown{display:flex;align-items:center;gap:10px;border:1px solid #ddd;background:white;border-radius:5px;padding:8px 12px;font:inherit;color:#444}
+.original-product #trustvox .material-icons{font-size:0!important;line-height:1;display:inline-block;font-style:normal}.original-product #trustvox .expand_more:after{content:'⌄';font:18px Arial}.original-product #trustvox .thumb_up:after{content:'👍';font:14px Arial}
+.original-product #trustvox .ts-reviews-list{list-style:none;padding:0;margin:0}.original-product #trustvox .ts-product-reviews-list-item{display:block;list-style:none;padding:20px 0;margin:0;border-top:1px solid #e5e5e5}
+.original-product #trustvox .ts-rating{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}.original-product #trustvox .ts-rating-number{display:none}.original-product #trustvox .ts-user{display:flex;align-items:center;gap:10px;flex:1;min-width:0}.original-product #trustvox .ts-avatar{width:38px;height:38px;flex:0 0 38px;border-radius:50%;background:#eef1f3;display:grid;place-items:center}.original-product #trustvox .ts-avatar p{margin:0;font-size:13px}.original-product #trustvox .ts-value-title{display:flex;flex-direction:column;font-weight:600}.original-product #trustvox .ts-value-shopping-verify{font-size:11px;color:#52725b;font-weight:400}.original-product #trustvox .ts-text-date{font-size:12px;color:#777}
+.original-product #trustvox .ts-review-title{font-weight:600;margin:12px 0 8px}.original-product #trustvox .ts-review{font-size:14px;line-height:1.65;white-space:pre-line}.original-product #trustvox .ts-recommendation p{font-size:12px;color:#52725b;margin:14px 0}.original-product #trustvox .ts-thumb-up{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid #ddd;border-radius:5px;background:#fff;color:#555;font:12px Arial}
+@media(max-width:767px){.original-product #trustvox .ts-product-reviews-flex{grid-template-columns:minmax(0,1fr);gap:24px}.original-product #trustvox .ts-product-review_title h3{font-size:20px}.original-product #trustvox .ts-header{justify-content:space-between}.original-product #trustvox .ts-text-date{margin-left:auto}.original-product #trustvox .side-review-container{max-width:360px;margin:auto}}
+@media(max-width:991px){.original-product .product__info .attrSimples{width:100%!important;max-width:100%!important;padding:0!important;margin:0 0 16px!important;box-sizing:border-box}}
+@media(max-width:991px){.original-product .product__info #attrSimples,.original-product .product__info #attrSimples>ul{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;padding:0!important;margin:0!important;box-sizing:border-box}.original-product .product__info #attrSimples .attrSimples__attrSelecionado{width:100%!important;max-width:100%!important;margin:0!important;box-sizing:border-box}}

@@ -20,3 +20,4 @@ Atualização: autenticação Git concluída com flavialimahot5-bot. Projeto env
 
 Correção mobile: colunas de roupa passam a ocupar a largura completa, galeria aparece no celular e cards informativos têm imagem/texto/botão alinhados. Corrigidos gutters e overflow horizontal. Validação em 24 cenários (8 páginas x 320/390/430px), sem falhas; relatório reference/mobile-layout-regression.json. Usuário autoriza enviar as próximas correções ao GitHub para deploy automático na Vercel.
 
+Correção de compra e avaliações (12/09/2026): botões e seletores de tamanho alinhados no mobile; layout local do widget de avaliações com cinco estrelas sobrepostas, histograma, ícones e comentários sem quebra de palavras. Testados 16 cenários (legging, macaquinho e kit em 320/390/430/500px), todos aprovados; relatório reference/controls-reviews-regression.json. npm run check sem erros. Vercel em produção: https://lojadosgrau.vercel.app, com deploy automático via main.
