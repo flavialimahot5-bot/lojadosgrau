@@ -1,13 +1,13 @@
 # Estado da loja
 
-1181 páginas de produtos em dist/p; 132 coleções com produtos.
+Atualizado: 2026-09-12T04:19:01.335Z
 
-Testado: home para coleção Whey, abas da home, coleção Roupas e abertura de produto, paginação Mês do Cliente, kit 4092 Chocolate por R$88,90 no carrinho e remoção.
+1181 páginas de produtos; 132 coleções com produtos. Fila de variações concluída: 606/606 arquivos; catálogo com 626 produtos contendo grupos de opções.
 
-Pendente: conferência de aproximadamente 600 seletores de variação, versões mobile específicas restantes e comparação visual integral. A captura de um HTML não equivale à validação completa da compra.
+Conferido neste avanço: cards da coleção; menu Categorias → Kits (66 produtos); Whey 185 com 19 sabores e escolha sincronizada; carrinho Chocolate R$174,90; Whey 4074 Chocolate 750g por R$122,90, duas unidades; galeria da legging 4575 com 7 fotos, abrir, avançar e fechar. Item preexistente no carrinho preservado.
 
-A coleta externa foi interrompida por revisão automática: sem créditos. Não contornar o bloqueio.
+Pendente: comparação visual integral de todos os layouts mobile, demais controles de conteúdo e páginas institucionais/conta. Não afirmar 100% de paridade. Gateway adiado pelo usuário.
 
-Publicação Sites indisponível: project_not_found para o ID já registrado. Nenhum projeto substituto foi criado.
+Publicação Sites ainda retorna project_not_found (404). Alterações disponíveis localmente.
 
-A prévia local usa node server.mjs na porta 4173. Não executar store-build ou o build antigo sobre dist sem preservar as alterações atuais.
+Prévia: node server.mjs na porta 4173. Não executar build antigo/store-build sobre dist sem preservar as alterações.

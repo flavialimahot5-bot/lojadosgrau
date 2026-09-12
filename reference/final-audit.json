@@ -11,18 +11,28 @@
     "home category tabs → collection",
     "Roupas collection (815 products) → product page",
     "Mês do cliente (62 products) → pagination",
-    "Kit 4092 → Chocolate → cart R$88.90 → remove"
+    "Kit 4092 → Chocolate → cart R$88.90 → remove",
+    "Whey 185: 19 flavors, Chocolate synced across 3 selectors, cart R$174.90 and removal",
+    "Whey 4074: Chocolate / 750g, unit R$122.90, 2 units, preserved existing cart item",
+    "Desktop Categories menu → Kits collection: 66 products and 24 cards on page 1",
+    "Clothing gallery 4575: 7 photos, open / next / close / focus restored"
   ],
   "limitations": [
-    "All product pages captured; individual variants and all mobile layouts have not been exhaustively validated.",
-    "Sites publication returns project_not_found.",
-    "Browser variant collection interrupted by automatic approval review: no credits remaining. About 600 selector pages require further option verification."
+    "All product pages captured; full visual parity across every mobile layout is not yet verified.",
+    "Sites publication returns project_not_found (404).",
+    "Payment gateway deferred by user; account/order backend not integrated."
   ],
-  "updatedAt": "2026-09-12T03:22:29.283Z",
+  "updatedAt": "2026-09-12T04:19:01.335Z",
   "localChanges": [
     "Mobile gallery and option wrapping adjusted",
     "Imported verified P/M/G/GG options for product 4575",
     "Unresolved selectors prevent adding an unverified variation to cart",
     "Accordion and close-video controls connected"
-  ]
+  ],
+  "variantQueue": {
+    "total": 606,
+    "captured": 606,
+    "missing": 0
+  },
+  "productsWithGroups": 626
 }
