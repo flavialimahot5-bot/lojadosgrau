@@ -1,0 +1,13 @@
+{
+  "name": "loja-growth",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "build": "node scripts/verify-dist.mjs",
+    "check": "node --check dist/commerce.js && node --check dist/original-product.js && node scripts/verify-dist.mjs"
+  }
+}

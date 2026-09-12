@@ -1,0 +1,11 @@
+.git
+.openai
+reference
+node_modules
+*-build.mjs
+build.mjs
+download.mjs
+snapshot-products*.mjs
+variants-collect*.mjs
+finalize-products.mjs
+WORK-STATUS.md
