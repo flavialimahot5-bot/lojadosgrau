@@ -1,0 +1,52 @@
+{
+  "complete": true,
+  "results": [
+    {
+      "case": "live-postcode",
+      "street": "Praça da Sé",
+      "city": "São Paulo",
+      "state": "SP",
+      "pass": true
+    },
+    {
+      "case": "missing",
+      "pass": true
+    },
+    {
+      "case": "offline-manual",
+      "pass": true
+    },
+    {
+      "case": "city-only-cep",
+      "pass": true
+    },
+    {
+      "case": "stale-response",
+      "pass": true
+    },
+    {
+      "case": "footer",
+      "width": 320,
+      "images": 12,
+      "pass": true
+    },
+    {
+      "case": "footer",
+      "width": 390,
+      "images": 12,
+      "pass": true
+    },
+    {
+      "case": "footer",
+      "width": 430,
+      "images": 12,
+      "pass": true
+    },
+    {
+      "case": "footer",
+      "width": 1280,
+      "images": 12,
+      "pass": true
+    }
+  ]
+}

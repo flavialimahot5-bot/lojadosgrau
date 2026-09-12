@@ -15,12 +15,32 @@ function mask(selector,format){const input=$(selector);input.addEventListener('i
 mask('#document',v=>v.slice(0,11).replace(/^(\d{3})(\d)/,'$1.$2').replace(/^(\d{3})\.(\d{3})(\d)/,'$1.$2.$3').replace(/(\d{3})(\d{1,2})$/,'$1-$2'));
 mask('#phone',v=>{v=v.slice(0,11);return v.length>2?'('+v.slice(0,2)+') '+(v.length>10?v.slice(2,7)+'-'+v.slice(7):v.length>6?v.slice(2,6)+'-'+v.slice(6):v.slice(2)):v});
 mask('#zip',v=>v.slice(0,8).replace(/^(\d{5})(\d)/,'$1-$2'));
+// Only the postal code is sent to ViaCEP; personal fields stay on this page.
+let zipTimer,zipController,zipVersion=0,zipPending=false,lastZip='',filledAddress={};
+const addressFields=['street','district','city','state'];
+function clearAutoAddress(){for(const [id,value] of Object.entries(filledAddress)){if($('#'+id).value===value)$('#'+id).value=''}filledAddress={}}
+async function lookupZip(){
+ const zip=digits($('#zip').value);if(zip.length!==8||zip===lastZip)return;
+ clearTimeout(zipTimer);zipController?.abort();const version=++zipVersion;const controller=new AbortController();zipController=controller;zipPending=true;lastZip=zip;
+ const baseline=Object.fromEntries(addressFields.map(id=>[id,$('#'+id).value]));$('#zip-status').textContent='Buscando endereço…';$('#zip').setAttribute('aria-busy','true');
+ const timeout=setTimeout(()=>controller.abort(),8000);
+ try{const response=await fetch('https://viacep.com.br/ws/'+zip+'/json/',{signal:controller.signal,referrerPolicy:'no-referrer'});if(!response.ok)throw Error('network');const data=await response.json();if(version!==zipVersion||digits($('#zip').value)!==zip)return;
+ if(data.erro){$('#zip-status').textContent='CEP não encontrado. Confira o CEP ou preencha o endereço manualmente.';lastZip='';return}
+ const values={street:data.logradouro,district:data.bairro,city:data.localidade,state:data.uf};
+ for(const id of addressFields){const field=$('#'+id),value=values[id];if(typeof value==='string'&&value&&field.value===baseline[id]){field.value=value;filledAddress[id]=field.value}}
+ const missing=addressFields.find(id=>!$('#'+id).value);$('#zip-status').textContent=missing?'CEP localizado. Complete os campos de endereço que ficaram em branco.':'Endereço preenchido. Informe o número e confira os dados.';
+ if(document.activeElement===$('#zip'))$('#'+(missing||'number')).focus();
+ }catch{if(version===zipVersion){lastZip='';$('#zip-status').textContent='Não foi possível consultar o CEP. Você pode preencher o endereço manualmente.'}}
+ finally{clearTimeout(timeout);if(version===zipVersion){zipPending=false;$('#zip').removeAttribute('aria-busy')}}
+}
+$('#zip').addEventListener('input',()=>{clearTimeout(zipTimer);zipController?.abort();zipVersion++;zipPending=false;lastZip='';clearAutoAddress();$('#zip-status').textContent='';$('#zip').removeAttribute('aria-busy');if(digits($('#zip').value).length===8){zipPending=true;zipTimer=setTimeout(lookupZip,350)}});
+$('#zip').addEventListener('blur',()=>{if(digits($('#zip').value).length===8)lookupZip()});
 for(const state of 'AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO'.split(' ')){$('#state').add(new Option(state,state))}
 function validCpf(value){const n=digits(value);if(n.length!==11||/^(\d)\1+$/.test(n))return false;return [9,10].every(size=>{const sum=[...n.slice(0,size)].reduce((s,x,i)=>s+Number(x)*(size+1-i),0);return ((sum*10)%11)%10===Number(n[size])})}
 function go(step){for(let n=1;n<=3;n++)$('#step-'+n).hidden=n!==step;document.querySelectorAll('.progress li').forEach((e,i)=>{e.classList.toggle('current',i===step-1);e.classList.toggle('complete',i<step-1);if(i===step-1)e.setAttribute('aria-current','step');else e.removeAttribute('aria-current')});const card=$('#step-'+step),title=card.querySelector('h1');title.tabIndex=-1;card.scrollIntoView({block:'start',behavior:'instant'});title.focus({preventScroll:true})}
 $('#identity-form').onsubmit=e=>{e.preventDefault();const name=$('#name'),cpf=$('#document'),phone=$('#phone');name.setCustomValidity(name.value.trim().split(/\s+/).length<2?'Informe seu nome e sobrenome.':'');cpf.setCustomValidity(validCpf(cpf.value)?'':'Informe um CPF válido.');phone.setCustomValidity([10,11].includes(digits(phone.value).length)?'':'Informe um telefone com DDD.');if(!e.target.reportValidity())return;$('#identity-error').textContent='';go(2)};
 $('#name').addEventListener('input',e=>e.target.setCustomValidity(''));
-$('#address-form').onsubmit=e=>{e.preventDefault();if(!e.target.reportValidity())return;$('#identity-review').textContent=$('#name').value.trim()+'\n'+$('#email').value.trim()+'\n'+$('#phone').value;$('#address-review').textContent=$('#street').value.trim()+', '+$('#number').value.trim()+($('#complement').value?' — '+$('#complement').value.trim():'')+'\n'+$('#district').value.trim()+' · '+$('#city').value.trim()+' / '+$('#state').value+'\nCEP '+$('#zip').value;go(3)};
+$('#address-form').onsubmit=e=>{e.preventDefault();if(zipPending){$('#zip-status').textContent='Aguarde a consulta do CEP antes de continuar.';return}if(!e.target.reportValidity())return;$('#identity-review').textContent=$('#name').value.trim()+'\n'+$('#email').value.trim()+'\n'+$('#phone').value;$('#address-review').textContent=$('#street').value.trim()+', '+$('#number').value.trim()+($('#complement').value?' — '+$('#complement').value.trim():'')+'\n'+$('#district').value.trim()+' · '+$('#city').value.trim()+' / '+$('#state').value+'\nCEP '+$('#zip').value;go(3)};
 document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>go(Number(b.dataset.back)));
 // Personal and address fields stay in memory only. A payment provider must validate
 // the catalog, stock, freight, discounts and prices on the server before charging.
