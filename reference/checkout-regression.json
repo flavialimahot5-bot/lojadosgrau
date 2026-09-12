@@ -1,0 +1,86 @@
+{
+  "complete": true,
+  "results": [
+    {
+      "width": 320,
+      "viewport": 303,
+      "scroll": 303,
+      "items": 2,
+      "total": "R$ 337,70",
+      "options": true,
+      "invalidBlocked": true,
+      "delivery": true,
+      "payment": true,
+      "noCharge": true,
+      "address": true,
+      "editRetained": true,
+      "noPersonalStorage": true,
+      "productReviews": true,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "viewport": 373,
+      "scroll": 373,
+      "items": 2,
+      "total": "R$ 337,70",
+      "options": true,
+      "invalidBlocked": true,
+      "delivery": true,
+      "payment": true,
+      "noCharge": true,
+      "address": true,
+      "editRetained": true,
+      "noPersonalStorage": true,
+      "productReviews": true,
+      "pass": true
+    },
+    {
+      "width": 430,
+      "viewport": 413,
+      "scroll": 413,
+      "items": 2,
+      "total": "R$ 337,70",
+      "options": true,
+      "invalidBlocked": true,
+      "delivery": true,
+      "payment": true,
+      "noCharge": true,
+      "address": true,
+      "editRetained": true,
+      "noPersonalStorage": true,
+      "productReviews": true,
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "viewport": 1263,
+      "scroll": 1263,
+      "items": 2,
+      "total": "R$ 337,70",
+      "options": true,
+      "invalidBlocked": true,
+      "delivery": true,
+      "payment": true,
+      "noCharge": true,
+      "address": true,
+      "editRetained": true,
+      "noPersonalStorage": true,
+      "productReviews": true,
+      "pass": true
+    },
+    {
+      "case": "[]",
+      "pass": true
+    },
+    {
+      "case": "not-json",
+      "pass": true
+    },
+    {
+      "case": "drawer-route",
+      "path": "/checkout.html",
+      "pass": true
+    }
+  ]
+}
