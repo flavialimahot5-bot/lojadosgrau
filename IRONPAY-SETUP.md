@@ -1,46 +1,37 @@
-# Configuração do Pix IronPay na Vercel
+# Pix IronPay: três variáveis obrigatórias
 
-Cadastre os valores diretamente em Settings → Environment Variables do projeto lojadosgrau. Não envie tokens pelo chat, não coloque no GitHub e não use prefixos NEXT_PUBLIC_, VITE_ ou PUBLIC_. Use Production. Em Preview, mantenha PAYMENTS_ENABLED=false para não gerar cobranças reais em testes.
+Em Vercel → lojadosgrau → Settings → Environment Variables, cadastre em Production:
 
-| Variável | Valor a cadastrar |
+| Variável | Valor |
 |---|---|
-| IRONPAY_API_TOKEN | Token de API da sua conta IronPay |
-| IRONPAY_PRODUCT_HASH | Hash do produto cadastrado na IronPay para representar os pedidos desta loja |
+| IRONPAY_API_TOKEN | Token da API IronPay |
+| IRONPAY_PRODUCT_HASH | Hash do produto cadastrado |
 | IRONPAY_OFFER_HASH | Hash da oferta desse produto |
-| CHECKOUT_SIGNING_SECRET | Segredo aleatório com pelo menos 32 caracteres; gere com um gerenciador de senhas |
-| UPSTASH_REDIS_REST_URL | Endpoint REST do Redis conectado ao projeto |
-| UPSTASH_REDIS_REST_TOKEN | Token REST do Redis |
-| CHECKOUT_SITE_URL | https://lojadosgrau.vercel.app (sem barra final) |
-| PAYMENTS_ENABLED | false durante configuração; true para ativar Pix real |
 
-Marque credenciais como Sensitive na Vercel quando a opção estiver disponível. Depois de alterar variáveis, faça um novo deployment/redeploy: alterações de ambiente não modificam deploys já existentes.
+Não compartilhe os valores no chat ou GitHub. Marque como Sensitive quando disponível. Não use prefixos PUBLIC_, VITE_ ou NEXT_PUBLIC_. Depois de cadastrar/alterar, faça redeploy. Credenciais somente em Production evitam cobrança em deploys Preview.
 
-## Redis
+Apenas essas três variáveis são necessárias. O servidor deriva a assinatura dos recibos de uma chave privada e usa o domínio de produção da loja. GET /api/pix informa ready sem expor credenciais; ready confirma a presença das variáveis, não a validade da conta/oferta na operadora.
 
-Conecte um banco Upstash Redis ao projeto pela área Storage/Marketplace da Vercel ou use um banco existente. Copie as variáveis REST com os nomes da tabela (se a integração gerar nomes diferentes, crie as variáveis correspondentes). Confira o plano e a região antes de criar o recurso. Não use token somente de leitura: a aplicação precisa registrar pedidos e bloqueios de criação.
+## Funcionamento
 
-O Redis guarda IDs, itens, valores e estados de pagamento por 30 dias. Nome, CPF, telefone e endereço não são gravados nele: esses dados são enviados à IronPay no momento de gerar o Pix. A identificação necessária à verificação do webhook é um HMAC, não o CPF aberto. Dados de entrega ficam no painel da IronPay.
+- Pix exclusivamente, PAC grátis e SEDEX R$ 9,90. O prazo do SEDEX aparece como estimativa de 1 a 2 dias úteis definida pelo lojista; PAC como entrega econômica.
+- O servidor recalcula preços e variações pelo catálogo local, ignorando preços enviados pelo navegador. Mantenha catálogo/estoque atualizados.
+- Produto e oferta IronPay precisam aceitar os itens físicos e os valores dos pedidos. Os itens e frete são enviados separadamente no cart, utilizando o produto configurado.
+- Nome, CPF, e-mail, telefone e endereço seguem do servidor para a IronPay. Não são gravados em sessionStorage. O token da operadora e a resposta bruta nunca são enviados ao navegador.
+- A resposta entrega QR Code, Copia e Cola e um recibo assinado de acesso ao pedido. O navegador guarda esse recibo na sessão. Qualquer instância Vercel consegue consultar a transação na IronPay com ele.
+- O pagamento só aparece confirmado depois da resposta autenticada da IronPay, conferindo hash, valor e método. Sem banco adicional, os pedidos ficam na IronPay; não há processamento independente de estoque/expedição nem confirmação por webhook local.
+- A validade do Pix exibida vem da resposta da operadora. Não prometemos 30 minutos sem confirmação da API.
 
-## Regras configuradas
+## Repetições e falhas de conexão
 
-- Pix exclusivamente; não há formulário de cartão.
-- PAC grátis, apresentado como entrega econômica.
-- SEDEX R$ 9,90, estimativa de 1 a 2 dias úteis definida pelo lojista.
-- O servidor recalcula itens e frete usando o catálogo/variações do repositório. Alterações de preço no navegador são ignoradas. O catálogo local é a fonte da loja; mantenha disponibilidade e preços atualizados antes de vender.
-- O produto/oferta na IronPay deve ser compatível com pedidos físicos de valor variável. Os itens reais, quantidades e variações seguem no cart; o product_hash configurado é utilizado nesses itens. Confirme essa configuração na sua conta antes de ativar.
-- Não há desconto automático por cupom.
+O botão bloqueia cliques repetidos e o servidor agrupa criações simultâneas na mesma instância. O navegador não repete automaticamente o POST de criação. Em resposta ambígua, orienta consultar o pedido antes de gerar outro Pix.
 
-## Confirmação e tentativas repetidas
+Sem armazenamento durável nem idempotência documentada pela IronPay, não há garantia de deduplicação entre instâncias diferentes. Se a conexão cair antes de receber o recibo, consulte o painel da IronPay antes de iniciar outro pedido. A limitação de requisições em memória também é por instância.
 
-O checkout mostra QR Code gerado no próprio servidor, Pix Copia e Cola e confirmação consultada na API da IronPay. O postback é informado automaticamente na criação da transação, com endereço /api/ironpay-webhook e chave por pedido. O webhook consulta a API autenticada para conferir valor e método; não aceita um simples status enviado por terceiros como prova de pagamento.
+A implementação anterior com Redis continua opcional para quem já possui UPSTASH_REDIS_REST_URL e UPSTASH_REDIS_REST_TOKEN; nesse modo há bloqueio persistente e webhook verificado pela API. Não é necessário contratar Redis para habilitar este checkout. CHECKOUT_SIGNING_SECRET e CHECKOUT_SITE_URL são opcionais; o segundo só precisa mudar ao trocar o domínio. PAYMENTS_ENABLED=false é um bloqueio opcional explícito: remova-o ou use true se ele tiver sido cadastrado antes.
 
-Um bloqueio persistente é gravado antes do POST de criação. Se a operadora demorar, responder com erro ou a conexão cair, a aplicação não repete automaticamente a criação. O mesmo pedido fica em verificação. Se a transação não tiver hash nem postback, confira o painel da IronPay antes de autorizar outra tentativa. Não apague bloqueios no Redis para forçar nova cobrança.
+## Validação
 
-A documentação não informa ambiente de sandbox nem chave de idempotência do provedor. Os testes automatizados usam respostas simuladas; nenhuma cobrança real foi feita durante a implementação. Depois de configurar as variáveis, valide uma compra Pix autorizada e confira o recebimento na conta correta antes de divulgar o checkout.
+Testes usam respostas simuladas, sem criar cobranças reais. Antes de divulgar o checkout, valide uma compra autorizada e confira valor, recebedor e confirmação no painel da IronPay. A documentação consultada não oferece sandbox nem chave de idempotência.
 
-## Fontes
-
-- IronPay: https://docs.ironpayapp.com.br/ — criar e consultar transações, token em query parameter e payload Pix.
-- Vercel: https://vercel.com/docs/environment-variables
-- Upstash REST: https://upstash.com/docs/redis/features/restapi
-- Logo Correios: https://commons.wikimedia.org/wiki/File:Correios.svg — autor Correios, marca mantida sem alteração.
+Fonte: https://docs.ironpayapp.com.br/ (criar/consultar transações Pix).
