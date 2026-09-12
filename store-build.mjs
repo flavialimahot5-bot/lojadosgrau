@@ -1,0 +1,7 @@
+import fs from 'node:fs/promises';
+let desktop=await fs.readFile('dist/index.html','utf8');let mobile=await fs.readFile('dist/mobile.html','utf8');
+const desktopHeader=desktop.match(/<header\b[^]*?<\/header>/)?.[0]||'';const mobileHeader=mobile.match(/<header\b[^]*?<\/header>/)?.[0]||'';
+let shell='<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Growth Supplements</title><link rel="stylesheet" href="/reference.css"><link rel="stylesheet" href="/mobile-original.css" media="(max-width:991px)"><link rel="stylesheet" href="/store.css"></head><body class="store-page"><div id="mainContainerSite"><div class="store-header-desktop">'+desktopHeader+'</div><div class="store-header-mobile">'+mobileHeader+'</div></div><main id="store-content" class="store-root" aria-live="polite"><p>Carregando produtos…</p></main><script src="/commerce.js" defer></script></body></html>';
+for(const name of['produto','catalogo','favoritos','carrinho'])await fs.writeFile('dist/'+name+'.html',shell);
+for(const file of['index.html','mobile.html']){let html=await fs.readFile('dist/'+file,'utf8');if(!html.includes('/commerce.js'))html=html.replace('</head>','<link rel="stylesheet" href="/store.css"></head>').replace('</body>','<script src="/commerce.js" defer></script></body>');await fs.writeFile('dist/'+file,html)}
+console.log('Product, catalog, favorites and cart pages generated');
