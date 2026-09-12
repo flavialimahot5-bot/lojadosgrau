@@ -35,3 +35,4 @@ A implementação anterior com Redis continua opcional para quem já possui UPST
 Testes usam respostas simuladas, sem criar cobranças reais. Antes de divulgar o checkout, valide uma compra autorizada e confira valor, recebedor e confirmação no painel da IronPay. A documentação consultada não oferece sandbox nem chave de idempotência.
 
 Fonte: https://docs.ironpayapp.com.br/ (criar/consultar transações Pix).
+Diagnóstico: códigos IRONPAY_HTTP_401/403 indicam autenticação recusada; IRONPAY_HTTP_422 indica validação rejeitada (os nomes de campos permitidos aparecem quando disponíveis). Os logs retêm apenas status e nomes de campos, sem resposta bruta nem credenciais. IRONPAY_RESPONSE_UNCONFIRMED indica comunicação sem confirmação: confira no painel antes de repetir. A presença das variáveis não comprova que a oferta aceita o valor enviado; confirme a configuração da oferta com a IronPay quando o erro apontar valor/oferta.

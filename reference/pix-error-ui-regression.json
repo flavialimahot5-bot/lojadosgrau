@@ -1,0 +1,27 @@
+{
+  "complete": true,
+  "results": [
+    {
+      "width": 320,
+      "quoteAmount": "R$ 169,80",
+      "shipping": "R$ 9,90",
+      "message": "A IronPay recusou os dados do pagamento (imagem do item). Código: IRONPAY_HTTP_422",
+      "reviewVisible": true,
+      "pixHidden": true,
+      "creates": 1,
+      "noOverflow": true,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "quoteAmount": "R$ 169,80",
+      "shipping": "R$ 9,90",
+      "message": "A IronPay recusou os dados do pagamento (imagem do item). Código: IRONPAY_HTTP_422",
+      "reviewVisible": true,
+      "pixHidden": true,
+      "creates": 1,
+      "noOverflow": true,
+      "pass": true
+    }
+  ]
+}
