@@ -11,3 +11,6 @@ Pendente: comparação visual integral de todos os layouts mobile, demais contro
 Publicação Sites ainda retorna project_not_found (404). Alterações disponíveis localmente.
 
 Prévia: node server.mjs na porta 4173. Não executar build antigo/store-build sobre dist sem preservar as alterações.
+
+Destino solicitado: Vercel, via https://github.com/flavialimahot5-bot/lojadosgrau.git. Remote origin configurado e branch main. Configuração vercel.json, package.json, validação estática e README adicionados. npm run check passou: 1181 produtos, 2597 arquivos e zero referências locais ausentes. Push ainda não realizado: revisão automática exigiu autorização explícita para enviar o projeto completo ao repositório externo.
+
