@@ -1,0 +1,2 @@
+import {configuration,CheckoutError,respond,bodyOf,webhook} from '../lib/payments.js';
+export default async function handler(req,res){try{if(req.method!=='POST')return respond(res,405,{error:'Método não permitido.'});if(!configuration().ready)return respond(res,503,{error:'Indisponível.'});const body=bodyOf(req);await webhook(req.query.order,req.query.key,body.transaction_hash||body.hash);return respond(res,200,{received:true})}catch(e){return respond(res,e instanceof CheckoutError?e.status:503,{error:'Notificação não confirmada.'})}}

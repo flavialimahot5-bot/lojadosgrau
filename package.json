@@ -10,6 +10,10 @@
     "dev": "node server.mjs",
     "start": "node server.mjs",
     "build": "node scripts/verify-dist.mjs",
-    "check": "node --check dist/commerce.js && node --check dist/original-product.js && node --check dist/checkout.js && node scripts/verify-dist.mjs"
+    "check": "node --check dist/commerce.js && node --check dist/original-product.js && node --check dist/checkout.js && node --check dist/pix-checkout.js && node --check api/pix.js && node --check api/ironpay-webhook.js && node --check lib/payments.js && node scripts/verify-dist.mjs",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
   }
 }

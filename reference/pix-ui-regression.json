@@ -1,0 +1,53 @@
+{
+  "complete": true,
+  "results": [
+    {
+      "width": 320,
+      "quoteAmount": "R$ 169,80",
+      "shipping": "R$ 9,90",
+      "headerTotal": "R$ 169,80",
+      "creates": 1,
+      "pixVisible": true,
+      "onlyPix": true,
+      "noOverflow": true,
+      "confirmed": true,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "quoteAmount": "R$ 169,80",
+      "shipping": "R$ 9,90",
+      "headerTotal": "R$ 169,80",
+      "creates": 1,
+      "pixVisible": true,
+      "onlyPix": true,
+      "noOverflow": true,
+      "confirmed": true,
+      "pass": true
+    },
+    {
+      "width": 430,
+      "quoteAmount": "R$ 169,80",
+      "shipping": "R$ 9,90",
+      "headerTotal": "R$ 169,80",
+      "creates": 1,
+      "pixVisible": true,
+      "onlyPix": true,
+      "noOverflow": true,
+      "confirmed": true,
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "quoteAmount": "R$ 169,80",
+      "shipping": "R$ 9,90",
+      "headerTotal": "R$ 169,80",
+      "creates": 1,
+      "pixVisible": true,
+      "onlyPix": true,
+      "noOverflow": true,
+      "confirmed": true,
+      "pass": true
+    }
+  ]
+}

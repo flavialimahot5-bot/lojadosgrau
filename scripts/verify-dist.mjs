@@ -15,7 +15,7 @@ async function walk(dir) {
 await walk(root);
 const errors = [];
 const requireFile = (file, owner) => { if (!files.has(file)) errors.push(`${owner}: arquivo ausente ${file}`); };
-for (const file of ['index.html','mobile.html','catalogo.html','produto.html','favoritos.html','carrinho.html','commerce.js','checkout.html','checkout.js','checkout.css','original-product.js','data/card-template.json']) requireFile(file, 'Aplicação');
+for (const file of ['index.html','mobile.html','catalogo.html','produto.html','favoritos.html','carrinho.html','commerce.js','checkout.html','checkout.js','checkout.css','pix-checkout.js','original-product.js','data/card-template.json']) requireFile(file, 'Aplicação');
 const catalog = JSON.parse(await fs.readFile(path.join(root, 'data/catalog.json'), 'utf8'));
 const collections = JSON.parse(await fs.readFile(path.join(root, 'data/collections.json'), 'utf8'));
 const ids = new Set();

@@ -4,5 +4,11 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "cleanUrls": false,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "functions": {
+    "api/*.js": {
+      "includeFiles": "dist/data/**",
+      "maxDuration": 60
+    }
+  }
 }
