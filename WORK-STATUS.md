@@ -17,3 +17,6 @@ Destino solicitado: Vercel, via https://github.com/flavialimahot5-bot/lojadosgra
 
 Atualização: autenticação Git concluída com flavialimahot5-bot. Projeto enviado para origin/main e commit remoto conferido. Este repositório local usa a conta Flavia nos próximos envios e commits. Configuração da Vercel incluída; implantação na Vercel ainda não realizada.
 
+
+Correção mobile: colunas de roupa passam a ocupar a largura completa, galeria aparece no celular e cards informativos têm imagem/texto/botão alinhados. Corrigidos gutters e overflow horizontal. Validação em 24 cenários (8 páginas x 320/390/430px), sem falhas; relatório reference/mobile-layout-regression.json. Usuário autoriza enviar as próximas correções ao GitHub para deploy automático na Vercel.
+

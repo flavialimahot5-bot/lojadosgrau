@@ -1,0 +1,314 @@
+{
+  "complete": true,
+  "results": [
+    {
+      "path": "/p/4575.html",
+      "width": 320,
+      "viewport": 303,
+      "scroll": 303,
+      "titleWidth": 263,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/p/4576.html",
+      "width": 320,
+      "viewport": 303,
+      "scroll": 303,
+      "titleWidth": 263,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/p/2712.html",
+      "width": 320,
+      "viewport": 303,
+      "scroll": 303,
+      "titleWidth": 263,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/p/185.html",
+      "width": 320,
+      "viewport": 303,
+      "scroll": 303,
+      "titleWidth": 271,
+      "cards": [
+        {
+          "width": 271,
+          "left": 16,
+          "right": 287,
+          "parts": [
+            271,
+            271,
+            271
+          ]
+        },
+        {
+          "width": 271,
+          "left": 16,
+          "right": 287,
+          "parts": [
+            271,
+            271,
+            271
+          ]
+        },
+        {
+          "width": 271,
+          "left": 16,
+          "right": 287,
+          "parts": [
+            271,
+            271,
+            271
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/p/72.html",
+      "width": 320,
+      "viewport": 303,
+      "scroll": 303,
+      "titleWidth": 271,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/p/4074.html",
+      "width": 320,
+      "viewport": 303,
+      "scroll": 303,
+      "titleWidth": 235,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/catalogo.html?categoria=%2Fcreatina",
+      "width": 320,
+      "viewport": 303,
+      "scroll": 303,
+      "titleWidth": 117,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/mobile.html",
+      "width": 320,
+      "viewport": 303,
+      "scroll": 303,
+      "titleWidth": 1,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/p/4575.html",
+      "width": 390,
+      "viewport": 373,
+      "scroll": 373,
+      "titleWidth": 333,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/p/4576.html",
+      "width": 390,
+      "viewport": 373,
+      "scroll": 373,
+      "titleWidth": 333,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/p/2712.html",
+      "width": 390,
+      "viewport": 373,
+      "scroll": 373,
+      "titleWidth": 333,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/p/185.html",
+      "width": 390,
+      "viewport": 373,
+      "scroll": 373,
+      "titleWidth": 341,
+      "cards": [
+        {
+          "width": 341,
+          "left": 16,
+          "right": 357,
+          "parts": [
+            341,
+            341,
+            341
+          ]
+        },
+        {
+          "width": 341,
+          "left": 16,
+          "right": 357,
+          "parts": [
+            341,
+            341,
+            341
+          ]
+        },
+        {
+          "width": 341,
+          "left": 16,
+          "right": 357,
+          "parts": [
+            341,
+            341,
+            341
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/p/72.html",
+      "width": 390,
+      "viewport": 373,
+      "scroll": 373,
+      "titleWidth": 341,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/p/4074.html",
+      "width": 390,
+      "viewport": 373,
+      "scroll": 373,
+      "titleWidth": 301,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/catalogo.html?categoria=%2Fcreatina",
+      "width": 390,
+      "viewport": 373,
+      "scroll": 373,
+      "titleWidth": 117,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/mobile.html",
+      "width": 390,
+      "viewport": 373,
+      "scroll": 373,
+      "titleWidth": 1,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/p/4575.html",
+      "width": 430,
+      "viewport": 413,
+      "scroll": 413,
+      "titleWidth": 373,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/p/4576.html",
+      "width": 430,
+      "viewport": 413,
+      "scroll": 413,
+      "titleWidth": 373,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/p/2712.html",
+      "width": 430,
+      "viewport": 413,
+      "scroll": 413,
+      "titleWidth": 373,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/p/185.html",
+      "width": 430,
+      "viewport": 413,
+      "scroll": 413,
+      "titleWidth": 381,
+      "cards": [
+        {
+          "width": 381,
+          "left": 16,
+          "right": 397,
+          "parts": [
+            381,
+            381,
+            381
+          ]
+        },
+        {
+          "width": 381,
+          "left": 16,
+          "right": 397,
+          "parts": [
+            381,
+            381,
+            381
+          ]
+        },
+        {
+          "width": 381,
+          "left": 16,
+          "right": 397,
+          "parts": [
+            381,
+            381,
+            381
+          ]
+        }
+      ],
+      "pass": true
+    },
+    {
+      "path": "/p/72.html",
+      "width": 430,
+      "viewport": 413,
+      "scroll": 413,
+      "titleWidth": 381,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/p/4074.html",
+      "width": 430,
+      "viewport": 413,
+      "scroll": 413,
+      "titleWidth": 338,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/catalogo.html?categoria=%2Fcreatina",
+      "width": 430,
+      "viewport": 413,
+      "scroll": 413,
+      "titleWidth": 117,
+      "cards": [],
+      "pass": true
+    },
+    {
+      "path": "/mobile.html",
+      "width": 430,
+      "viewport": 413,
+      "scroll": 413,
+      "titleWidth": 1,
+      "cards": [],
+      "pass": true
+    }
+  ]
+}

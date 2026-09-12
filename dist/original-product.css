@@ -19,3 +19,40 @@
 
 .original-product [data-local-list]{position:relative;background:white;color:#222;border:1px solid #ddd;list-style:none;padding:0;margin:0;max-height:280px;overflow:auto;z-index:8}.original-product [data-local-list] [role=option]{padding:12px 14px;list-style:none;border-bottom:1px solid #eee}.original-product [data-local-list] [aria-disabled=true]{opacity:.5;cursor:not-allowed}
 .original-product #myModal{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;z-index:10000!important;overflow:hidden!important;background:#000c!important;padding:0!important}.original-product #myModal .modal-content,.original-product #myModal .slides-modal{position:relative!important;display:block!important;width:100%!important;max-width:100%!important;height:100%!important;margin:0!important;background:transparent!important}.original-product #myModal .mySlides{position:relative!important;width:100%!important;height:100%!important;text-align:center}.original-product #myModal .modal-image{height:100%!important;width:100%!important;object-fit:contain!important;max-height:100%!important}.original-product #myModal .close{position:absolute!important;right:20px!important;top:12px!important;left:auto!important;z-index:3!important;background:#0009!important;color:white!important;border:0!important;font-size:32px!important;padding:6px 14px!important}.original-product #myModal .prev,.original-product #myModal .next{position:absolute!important;top:50%!important;z-index:2!important;border:0!important;background:#0009!important;color:#fff!important;padding:16px!important}.original-product #myModal .prev{left:12px!important;right:auto!important}.original-product #myModal .next{right:12px!important;left:auto!important}.original-product #myModal .numbertext{position:absolute!important;bottom:12px!important;top:auto!important;left:50%!important;transform:translateX(-50%);background:#0009;color:white;padding:5px 12px;z-index:2}
+/* Mobile product layouts: reset desktop columns and Bootstrap gutter overflow. */
+@media(max-width:991px){
+  html:has(body.original-product){overflow-x:hidden}
+  body.original-product{width:100%;max-width:100%;overflow-x:hidden}
+  .original-product main,.original-product main *{box-sizing:border-box}
+  .original-product main{width:100%;min-width:0;max-width:100%}
+  .original-product main .row{margin-left:0!important;margin-right:0!important;max-width:100%}
+  .original-product main .container,.original-product main .container-fluid{width:100%!important;max-width:100%!important;min-width:0}
+  .original-product .mainContainer>.row{display:flex!important;flex-direction:column!important;width:100%!important}
+  .original-product .mainContainer .main__content,.original-product .mainContainer .product__info{display:block!important;flex:0 0 auto!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important}
+  .original-product .mainContainer .main__content{padding:0!important}
+  .original-product .mainContainer .product__info{position:relative!important;top:auto!important;padding:22px 18px!important}
+  .original-product .product__info>.container{padding:0!important;margin:0!important;text-align:left!important;align-items:stretch!important}
+  .original-product .product__info h1{width:100%!important;padding-right:38px!important;font-size:21px!important;line-height:1.3!important;word-break:normal!important;overflow-wrap:break-word!important;margin:0 0 18px!important}
+  .original-product .product__info .favorito_btn{top:20px!important;right:16px!important;left:auto!important}
+  .original-product .product__info [aria-label="Preço à vista"]{max-width:100%;white-space:nowrap}
+  .original-product .product__info [aria-label="Preço parcelado"]{width:100%;max-width:100%;text-align:left}
+  .original-product .product__info .attrSimples,.original-product .product__info [aria-haspopup=listbox]{width:100%!important;max-width:100%;min-width:0!important}
+  .original-product .product__medias,.original-product .product__medias .desk-slider{display:block!important;width:100%!important;max-width:100%!important}
+  .original-product .product__medias .vitrine-imagens{display:grid!important;grid-template-columns:none!important;grid-auto-flow:column;grid-auto-columns:100%;gap:0!important;width:100%!important;max-width:100%;overflow-x:auto;scroll-snap-type:x mandatory}
+  .original-product .product__medias .vitrine-imagens>.mediaWrapper{grid-column:auto!important;width:100%!important;min-width:0!important;margin:0!important;scroll-snap-align:start}
+  .original-product .product__medias .vitrine-imagens img{display:block;width:100%!important;height:440px!important;max-width:100%;object-fit:contain;background:#f4f4f4}
+  .original-product .product__medias .buttons{position:relative!important;inset:auto!important;padding:8px 14px;justify-content:flex-end}
+  .original-product .breadcrumb{max-width:100%;overflow-x:auto}
+  .original-product .cards__item--wrapper{width:100%!important;max-width:100%!important;flex:0 0 100%!important;margin:0 0 20px!important;padding:0!important}
+  .original-product .cards__item{display:flex;flex-direction:column;width:100%!important;max-width:100%!important;margin:0!important;overflow:hidden}
+  .original-product .cards__item>img{display:block;width:100%!important;height:auto!important;max-width:100%;object-fit:contain}
+  .original-product .cards__item--text{width:100%!important;max-width:100%!important;height:auto!important;min-height:0!important;padding:24px 18px!important}
+  .original-product .cards__item--btn{width:100%!important;margin:0!important;align-self:stretch}
+  .original-product main img,.original-product main video,.original-product main iframe{max-width:100%}
+  .original-product .barra_navegacao{max-width:100%;overflow-x:auto}
+}
+@media(max-width:991px){
+.original-product .product__medias .vitrine-imagens,.original-product .breadcrumb{scrollbar-width:none}
+.original-product .product__medias .vitrine-imagens::-webkit-scrollbar,.original-product .breadcrumb::-webkit-scrollbar{display:none}
+.original-product .product__medias .vitrine-imagens{overscroll-behavior-x:contain}
+}
