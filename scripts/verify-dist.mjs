@@ -32,6 +32,13 @@ const missingAssets = new Map();
 for (const file of files) {
   if (!/\.(html|css)$/.test(file)) continue;
   const source = await fs.readFile(path.join(root, file), 'utf8');
+  if (file.endsWith('.html')) {
+    const head = source.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1] || '';
+    const tags = [...source.matchAll(/data-store-clarity="yhipku10gk"/g)];
+    if (tags.length !== 1 || !head.includes('data-store-clarity="yhipku10gk"')) {
+      errors.push(`${file}: Clarity deve aparecer exatamente uma vez no head`);
+    }
+  }
   const refs = file.endsWith('.html') ? source.matchAll(/(?:src|href)\s*=\s*["']([^"']+)["']/gi) : source.matchAll(/url\(\s*["']?([^"')\s]+)["']?\s*\)/gi);
   for (const [, ref] of refs) {
     if (/^(?:[a-z][a-z\d+.-]*:|\/\/|#|\?)/i.test(ref)) continue;
