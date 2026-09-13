@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {configuration,allowedCheckoutOrigin,quote,create,view} from '../lib/payments.js';
+import {configuration,quote,create,view} from '../lib/payments.js';
 import handler from '../api/pix.js';
 for(const key of ['CHECKOUT_SIGNING_SECRET','UPSTASH_REDIS_REST_URL','UPSTASH_REDIS_REST_TOKEN','CHECKOUT_SITE_URL','PAYMENTS_ENABLED'])delete process.env[key];
 const credentials={IRONPAY_API_TOKEN:'test-secret-not-real',IRONPAY_PRODUCT_HASH:'test-product',IRONPAY_OFFER_HASH:'test-offer'};
@@ -12,12 +12,12 @@ test('only the three IronPay credentials enable payments; blank credentials do n
  assert.equal(configuration({...credentials,IRONPAY_API_TOKEN:' '}).ready,false);
  assert.equal(configuration(credentials).site,'https://lojadosgrau.vercel.app');
 });
-test('public readiness reveals no credentials and cross-origin creation is rejected',async()=>{
+test('public readiness reveals no credentials and invalid operations stay rejected',async()=>{
  const res={setHeader(){},status(value){this.code=value;return this},json(value){this.data=value}};
  await handler({method:'GET'},res);assert.equal(res.data.ready,true);
  for(const secret of Object.values(credentials))assert.ok(!JSON.stringify(res.data).includes(secret));
  await handler({method:'POST',headers:{origin:'https://other.example','content-type':'application/json'},body:{}},res);
- assert.equal(res.code,403);
+ assert.equal(res.code,400);
 });
 test('signed receipts resume on another instance; tampering and ambiguous retries are blocked',async()=>{
  const realFetch=globalThis.fetch;let posts=0,payload,timeout=false;const provider=new Map();
@@ -78,10 +78,13 @@ test('provider rejection gives a safe diagnostic; accepted hashes survive incomp
  }finally{globalThis.fetch=savedFetch;console.warn=savedWarn}
 });
 
-test('production checkout domain can quote while unrelated and lookalike origins stay blocked',async()=>{
+test('checkout quotes work across domains and without an Origin header',async()=>{
  const res={setHeader(){},status(value){this.code=value;return this},json(value){this.data=value}};
- await handler({method:'POST',headers:{origin:'https://gsuplementsbr.vercel.app','content-type':'application/json'},body:{action:'quote',items,shippingMethod:'pac'}},res);
- assert.equal(res.code,200);assert.equal(res.data.state,'quoted');assert.equal(res.data.amount,6396);
- for(const origin of [undefined,'null','http://gsuplementsbr.vercel.app','https://gsuplementsbr.vercel.app.evil.test','https://other.vercel.app'])assert.equal(allowedCheckoutOrigin(origin),false);
- assert.equal(allowedCheckoutOrigin('https://configured.example',{...credentials,CHECKOUT_SITE_URL:'https://configured.example/'}),true);
+ for(const origin of ['https://gsuplementsbr.vercel.app','https://new-store.example','https://preview.vercel.app',undefined]){
+  const headers={'content-type':'application/json'};if(origin)headers.origin=origin;
+  await handler({method:'POST',headers,body:{action:'quote',items,shippingMethod:'pac'}},res);
+  assert.equal(res.code,200);assert.equal(res.data.state,'quoted');assert.equal(res.data.amount,6396);
+  await handler({method:'POST',headers,body:{action:'create',id:res.data.id,accessToken:'invalid',customer}},res);
+  assert.equal(res.code,403);
+ }
 });
