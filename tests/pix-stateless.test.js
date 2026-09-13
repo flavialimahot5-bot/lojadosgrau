@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {configuration,quote,create,view} from '../lib/payments.js';
+import {configuration,allowedCheckoutOrigin,quote,create,view} from '../lib/payments.js';
 import handler from '../api/pix.js';
 for(const key of ['CHECKOUT_SIGNING_SECRET','UPSTASH_REDIS_REST_URL','UPSTASH_REDIS_REST_TOKEN','CHECKOUT_SITE_URL','PAYMENTS_ENABLED'])delete process.env[key];
 const credentials={IRONPAY_API_TOKEN:'test-secret-not-real',IRONPAY_PRODUCT_HASH:'test-product',IRONPAY_OFFER_HASH:'test-offer'};
@@ -76,4 +76,12 @@ test('provider rejection gives a safe diagnostic; accepted hashes survive incomp
   assert.equal(recoverable.state,'processing');assert.ok(recoverable.accessToken);assert.equal(recoverable.pixCode,null);
   mode='approved';assert.equal((await view(q3.id,recoverable.accessToken)).state,'paid');assert.equal(posts,3);
  }finally{globalThis.fetch=savedFetch;console.warn=savedWarn}
+});
+
+test('production checkout domain can quote while unrelated and lookalike origins stay blocked',async()=>{
+ const res={setHeader(){},status(value){this.code=value;return this},json(value){this.data=value}};
+ await handler({method:'POST',headers:{origin:'https://gsuplementsbr.vercel.app','content-type':'application/json'},body:{action:'quote',items,shippingMethod:'pac'}},res);
+ assert.equal(res.code,200);assert.equal(res.data.state,'quoted');assert.equal(res.data.amount,6396);
+ for(const origin of [undefined,'null','http://gsuplementsbr.vercel.app','https://gsuplementsbr.vercel.app.evil.test','https://other.vercel.app'])assert.equal(allowedCheckoutOrigin(origin),false);
+ assert.equal(allowedCheckoutOrigin('https://configured.example',{...credentials,CHECKOUT_SITE_URL:'https://configured.example/'}),true);
 });
